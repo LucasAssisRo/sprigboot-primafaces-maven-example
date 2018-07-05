@@ -1,0 +1,25 @@
+<f:view xmlns="http://www.w3c.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:ng="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>Country Search</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="3" cellpadding="4">
+               <p:outputLabel value="Country:" for="country" />
+               <p:autoComplete id="country" value="#{autoCompleteView.text}" completeMethod="#{autoCompleteView.completeText}" />
+               <p:commandButton value="Submit" actionListener="#{autoCompleteView.submit}" update="result">
+                   <f:ajax execute="@form" render="@form" />
+               </p:commandButton>
+            </h:panelGrid>
+            <h:messages />
+            <h:outputText id="result" value="#{autoCompleteView.result}" />
+        </h:form>
+    </h:body>
+</f:view>
